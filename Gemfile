@@ -35,8 +35,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "devise"
 gem "toastr-rails"
-gem "omniauth"
+# gem "omniauth"
+gem 'omniauth-oauth2', '~> 1.3.1'
 gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

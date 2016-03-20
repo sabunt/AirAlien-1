@@ -264,4 +264,5 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   config.omniauth :facebook, "1525540161081072", "504dd69d345b58d415c5abe6fa825c0c", scope: "email", info_fields: "email,name"
+  config.omniauth :google_oauth2, "117242660457-gauc2tnrqvt396ag9qu7frh7ifft5jbs.apps.googleusercontent.com", "-YAH1w9b7xyg5HNknVG0IA71", :client_options => { :ssl => { :verify => !Rails.env.development? } }
 end
