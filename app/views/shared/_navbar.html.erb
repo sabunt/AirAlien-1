@@ -13,10 +13,10 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <% if !user_signed_in? %>
-			<li><%= link_to "Log In", new_user_session_path %></li>
-			<li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <li><%= link_to "Log In", new_user_session_path %></li>
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
 		<% else %>
-			<li class="dropdown">
+			  <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           		<%= image_tag avatar_url(current_user), class: "img-circle avatar-small" %>&nbsp;
           		<%= current_user.fullname %> <span class="caret"></span>
@@ -29,8 +29,16 @@
 	            <li><a href="#">Account Settings</a></li>
 	            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
 	          </ul>
-	        </li>
-        <% end %>
+         </li>
+       <% end %>
+
+        <li>
+          <a href="#"><i class="fa fa-envelope-o"></i> Messages</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-home fa-lg"></i> Become a Host</a>
+        </li>
+
       </ul>
     </div><!--/.nav-collapse -->
   </div>

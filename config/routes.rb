@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :rooms, except: [:destroy]
+  resources :photos
   
 end
