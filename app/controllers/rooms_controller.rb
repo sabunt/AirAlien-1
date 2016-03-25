@@ -16,11 +16,10 @@ class RoomsController < ApplicationController
 
   def create
     @room = current_user.rooms.new(room_params)
-
     if @room.save
       if params[:images]
         params[:images].each do |image|
-          @room.photos.create(image: image)
+          @room.photos.create!(image: image)
         end
       end
 
