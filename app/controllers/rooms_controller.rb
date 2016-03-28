@@ -26,7 +26,8 @@ class RoomsController < ApplicationController
       @photos = @room.photos
       redirect_to edit_room_path(@room), notice: "Room created!"
     else
-      render :new, alert: "Room could not be created!"
+      flash[:alert] = "Room could not be created!"
+      render :new
     end
   end
 
@@ -49,7 +50,8 @@ class RoomsController < ApplicationController
       # @photos = @room.photos // testing to see if I don't need this?
       redirect_to edit_room_path(@room), notice: "Room updated!!"
     else
-      render :edit, alert: "Room could not be updated!"
+      flash[:alert] = "Room could not be updated!"
+      render :edit
     end
   end
 
