@@ -226,7 +226,15 @@ input[type="checkbox"]:focus {
 	text-decoration: line-through;
 }
 
+#preview {
+	display: none;
+}
 
+.reservation-table td {
+	width: 100%;
+	border: 1px solid #DCE0E0;
+	padding: 10px;
+}
 
 
 
