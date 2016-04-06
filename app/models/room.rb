@@ -3,7 +3,7 @@ class Room < ActiveRecord::Base
   has_many :photos, dependent: :destroy
   has_many :reservations, dependent: :destroy
 
-  validates :photos, presence: true
+  # validates :photos, presence: true
   validates :home_type, presence: true
   validates :room_type, presence: true
   validates :accomodate, presence: true
@@ -16,5 +16,13 @@ class Room < ActiveRecord::Base
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  def show_first_photo(size)
+    if self.photos.length == 0
+      "http://placehold.it/120x66"
+    else
+      self.photos[0].image.url(size)
+    end
+  end
 
 end
