@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408005144) do
+ActiveRecord::Schema.define(version: 20160409215742) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160408005144) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string   "content_text"
+    t.text     "content"
     t.integer  "conversation_id"
     t.integer  "user_id"
     t.datetime "created_at",      null: false
