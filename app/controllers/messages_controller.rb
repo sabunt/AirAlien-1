@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
 		# @messages = @conversation.messages.order("created_at DESC") I don't think I need this code...
 
 		if @message.save
-			redirect_to conversation_messages_path(@conversation), notice: "Message sent!"
+			respond_to :js
 		else
 			redirect_to conversation_messages_path(@conversation), alert: "Message could not be sent."
 		end
