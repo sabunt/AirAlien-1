@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
   has_many :rooms, dependent: :destroy
   has_many :reservations, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
 
   validates :fullname, presence: true, length: { maximum: 50 }

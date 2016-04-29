@@ -2,6 +2,7 @@ class Room < ActiveRecord::Base
   belongs_to :user
   has_many :photos, dependent: :destroy
   has_many :reservations, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   # validates :photos, presence: true
   validates :home_type, presence: true
@@ -22,6 +23,14 @@ class Room < ActiveRecord::Base
       "http://placehold.it/120x66"
     else
       self.photos[0].image.url(size)
+    end
+  end
+
+  def average_rating
+    if reviews.count == 0
+      return 0
+    else
+      reviews.average(:star).round(2)
     end
   end
 
