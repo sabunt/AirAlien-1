@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:show]
-  # resources :rooms, except: [:destroy]
+  
   resources :photos
 
   resources :rooms, except: [:destroy] do
@@ -17,11 +17,14 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :destroy]
   end
 
+  resources :reservations, only: [:create] do
+    resource :feedback, only: [:create]
+  end
+
   resources :conversations, only: [:index, :create] do
     resources :messages, only: [:index, :create]
   end
 
-  resources :rooms
   
   get "/preload" => "reservations#preload"
   get "/preview" => "reservations#preview"

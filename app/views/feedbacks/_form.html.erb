@@ -1,0 +1,10 @@
+<%= form_for [@reservation, @feedback], url: reservation_feedback_path(@reservation) do |f| %>
+	<div class="form-group">
+		<%= f.text_area :comment, rows: 3, class: "form-control" %>
+	</div>
+		<%= f.hidden_field :reservation_id, value: @reservation.id %>
+	<div class="actions">
+		<%= f.submit "Create", class: "btn btn-primary" %>
+	</div>
+
+<% end %>

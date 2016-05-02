@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :rooms, dependent: :destroy
   has_many :reservations, dependent: :destroy
   has_many :reviews, dependent: :destroy
-
+  has_many :feedbacks, dependent: :destroy
 
   validates :fullname, presence: true, length: { maximum: 50 }
 
@@ -24,5 +24,16 @@ class User < ActiveRecord::Base
   			user.password = Devise.friendly_token[0,20]
   		end	
   	end
+  end
+
+  def feedbacks_for_me
+    feedbacks = []
+    self.reservations.each do |reservation|
+      if reservation.feedback
+        feedbacks << reservation.feedback
+      end
+    end
+
+    return feedbacks
   end
 end

@@ -31,13 +31,14 @@
 						</div>
 						<div class="panel-body">
 							<%= link_to room.listing_name, room_path(room) %>
+							<p>(<%= pluralize(room.reviews.count, "Review") %>)</p>
 						</div>
 					</div>
 				</div>
 			<% end %>
 		</div>
 
-		<h4>Reviews</h4>
+		<h4>Reviews for this user's listings</h4>
 		<% @rooms.each do |room| %>
 			<% if !room.reviews.blank? %>
 				<% room.reviews.each do |review| %>
@@ -55,5 +56,39 @@
 				<% end %>
 			<% end %>
 		<% end %>
+
+		<h4>Feedback for this user as a guest!</h4>
+		<p>You can write a review for this user:</p>
+		<%= render "feedbacks/form" %>
+		
+		<h4>Feedback on this guest</h4>
+		<% @guest_feedbacks.each do |feedback| %>
+			<hr>
+
+			<div class="row">
+				<div class="col-md-1">
+					<%= image_tag avatar_url(feedback.user), class: "img-circle avatar-medium" %>
+				</div>
+				<div class="col-md-11">
+					<div>
+						<strong><%= feedback.user.fullname %> <div id=""></div></strong>
+					</div>
+					<div><%= feedback.created_at.strftime("%v") %></div>
+					<div><%= feedback.comment %></div>
+				</div>
+			</div>
+		<% end %>
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
