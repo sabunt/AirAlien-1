@@ -57,9 +57,11 @@
 			<% end %>
 		<% end %>
 
-		<h4>Feedback for this user as a guest!</h4>
-		<p>You can write a review for this user:</p>
-		<%= render "feedbacks/form" %>
+		<% if !@user.feedback_exists?(current_user) %>
+			<h4>Feedback for this user as a guest!</h4>
+			<p>You can write a review for this user:</p>
+			<%= render "feedbacks/form" %>
+		<% end %>
 		
 		<h4>Feedback on this guest</h4>
 		<% @guest_feedbacks.each do |feedback| %>

@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
   	end
   end
 
+  #returns all the feedbacks left for a particular guest
+  #can refactor to say Feedback.where(guest_id: 1)
   def feedbacks_for_me
     feedbacks = []
     self.reservations.each do |reservation|
@@ -36,4 +38,10 @@ class User < ActiveRecord::Base
 
     return feedbacks
   end
+
+  #returns true if the host has already left feedback for the guest
+  def feedback_exists?(host)
+    self.feedbacks_for_me.any? { |feedbacks| feedbacks.user_id == host.id }
+  end
+
 end

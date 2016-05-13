@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501190945) do
+ActiveRecord::Schema.define(version: 20160513183946) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160501190945) do
     t.integer  "reservation_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "guest_id"
   end
 
   add_index "feedbacks", ["reservation_id"], name: "index_feedbacks_on_reservation_id"
@@ -70,11 +71,11 @@ ActiveRecord::Schema.define(version: 20160501190945) do
 
   create_table "reviews", force: :cascade do |t|
     t.text     "comment"
-    t.integer  "star",       default: 1
+    t.integer  "star"
     t.integer  "room_id"
     t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "reviews", ["room_id"], name: "index_reviews_on_room_id"
