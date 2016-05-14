@@ -1,0 +1,63 @@
+<div id="wrapper">
+	<div id="sidebar">
+		<div id="widget" class="sticky">
+			
+		</div>
+	</div>
+
+	<div id="article">
+		<div class="row">
+			<%= search_form @search, url: search_path do |f| %>
+				
+				<div class="row">
+					<div class="col-md-3">
+						<%= text_field_tag :start_date, params[:start_date], placeholder: "Start Date", class: "form-control" %>
+					</div>
+					<div class="col-md-3">
+						<%= text_field_tag :end_date, params[:end_date], placeholder: "End Date", class: "form-control" %>
+					</div>
+					<div class="col-md-3">
+						<%= f.text_field :price_gteq, placeholder: "Min Price", class: "form-control" %>
+					</div>
+					<div class="col-md-3">
+						<%= f.text_field :price_lteq, placeholder: "Max Price", class: "form-control" %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4">
+						<%= check_box_tag "q[room_type_eq_any][]", "Entire" %> Entire Room
+					</div>
+					<div class="col-md-4">
+						<%= check_box_tag "q[room_type_eq_any][]", "Private" %> Private Room
+					</div>
+					<div class="col-md-4">
+						<%= check_box_tag "q[room_type_eq_any][]", "Shared" %> Shared Room
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label>Accomodates</label>
+							<%= f.select :accomodate_gteq, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6+", 6]], prompt: "Select...", class: "form-control" %>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label>Bedrooms</label>
+							<%= f.select :accomodate_gteq, [["1", 1], ["2", 2], ["3", 3], ["4+", 4]], prompt: "Select...", class: "form-control" %>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label>Bathrooms</label>
+							<%= f.select :accomodate_gteq, [["1", 1], ["2", 2], ["3", 3], ["4+", 4]], prompt: "Select...", class: "form-control" %>
+						</div>
+					</div>
+				</div>
+
+			<% end %>
+		</div>
+	</div>
+</div>
